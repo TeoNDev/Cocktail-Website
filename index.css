@@ -23,33 +23,14 @@ body {
     width: 100%;
 }
 
-.bold {
-    font-weight: bold;
-}
-
-.question-box {
-    margin-bottom: 30px;
-}
-
-.question {
-    margin-bottom: 20px;
-    font-size: 30px;
-}
-
-.input {
-    height: 20px;
-    font-size: 14px;
-}
-
-.button,
-.showAnswers,
-.nextCocktail {
+.button {
     margin-left: 10px;
     align-items: center;
     background-color: #0A66C2;
     border: 0;
     border-radius: 100px;
-    box-sizing: border-box;
+    box-sizing: borde
+    r-box;
     color: #ffffff;
     cursor: pointer;
     display: inline-flex;
@@ -75,146 +56,4 @@ body {
 .button:active {
     background: #09223b;
     color: rgb(255, 255, 255, .7);
-}
-
-.button-group {
-    margin: 40px;
-}
-
-.question-box {
-    height: 100px;
-}
-
-.outer-card {
-    background-color: white;
-    border: solid 1px black;
-    height: 400px;
-    width: 650px;
-    padding: 10px;
-    box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
-}
-
-.inner-card {
-    background-color: white;
-    border: solid 1px black;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-}
-
-.cocktail-img {
-    height: 100%;
-    min-width: 235px;
-    object-fit: cover;
-}
-
-.recipe {
-    border-left: solid 1px black;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-right: 15px;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.cocktail-name {
-    display: flex;
-    font-weight: bold;
-    font-size: 25px;
-    padding-bottom: 8px;
-}
-
-.header-bottom {
-    font-size: 14px;
-    display: flex;
-    flex-direction: row;
-}
-
-.header-bottom-left {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    width: 200px;
-}
-
-.attributes {
-    font-size: 14px;
-    display: flex;
-}
-
-.ingredients, .mls {
-    display: flex;
-    align-items: center;
-    border-top: solid 1px black;
-}
-
-.ingredients {
-    height: 30px;
-    width: 277px;
-    padding-left: 5px;
-}
-
-.mls {
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-    width: 100px;
-    justify-content: center;
-}
-
-.ingredients-ml-list {
-    font-size: 14px;
-    width: 377px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: solid 1px black;
-}
-
-.ingredient, .ml {
-    height: 30px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.ingredient-grey, .ml-grey {
-    background-color: #E8E8E8;
-}
-
-.ml-list {
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-    width: 100px;
-}
-
-.ml {
-    justify-content: center;
-}
-
-.ingredient {
-    width: 277px;
-}
-
-.garnish {
-    font-size: 14px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
-}
-
-.number-of-cocktails {
-    font-size: 20px;
-    width: 40px;
-    display: flex;
-    justify-content: space-between;
 }

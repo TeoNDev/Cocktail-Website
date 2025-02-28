@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cocktail Game</title>
+    <link rel="stylesheet" href="cocktailGame.css">
+</head>
+<body>
+    <div class="question-box" id="question-box">
+        <p class="question" id="question"></p>
+        <input class="input" type="text" list="suggestions" class="input" id="input">
+        <input class="button check-answer" type="button" id="button" value="Check Answer" onclick="checkAnswer()">
+    </div>
+    <div class="outer-card">
+        <div class="inner-card">
+            <img src="" alt="" class="cocktail-img" id="cocktail-img">
+            <div class="recipe">
+                <div class="header">
+                    <div class="cocktail-name" id="cocktail-name">Cocktail Name</div>
+                    <div class="header-bottom">
+                        <div class="header-bottom-left">
+                            <div class="glass" id="glass">GLASS: </div>
+                            <div class="ice" id="ice">ICE: </div>
+                        </div>
+                        <div class="header-bottom-right">
+                            <div class="procedure" id="procedure">PROCEDURE: </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="attributes">
+                    <div class="ingredients">INGREDIENTS:</div>
+                    <div class="mls">MLS</div>
+                </div>
+                <div class="ingredients-ml-list">
+                    <div class="ingredients-list">
+                        <div class="ingredient-1 ingredient ingredient-grey" id="ingredient1"></div>
+                        <div class="ingredient-2 ingredient" id="ingredient2"></div>
+                        <div class="ingredient-3 ingredient ingredient-grey" id="ingredient3"></div>
+                        <div class="ingredient-4 ingredient" id="ingredient4"></div>
+                        <div class="ingredient-5 ingredient ingredient-grey" id="ingredient5"></div>
+                        <div class="ingredient-6 ingredient" id="ingredient6"></div>
+                        <div class="ingredient-7 ingredient ingredient-grey" id="ingredient7"></div>
+                        <div class="ingredient-8 ingredient" id="ingredient8"></div>
+                        <div class="ingredient-9 ingredient ingredient-grey" id="ingredient9"></div>
+                        <div class="ingredient-10 ingredient" id="ingredient10"></div>
+                    </div>
+                    <div class="ml-list">
+                        <div class="ml-1 ml ml-grey" id="ml1"></div>
+                        <div class="ml-2 ml" id="ml2"></div>
+                        <div class="ml-3 ml ml-grey" id="ml3"></div>
+                        <div class="ml-4 ml" id="ml4"></div>
+                        <div class="ml-5 ml ml-grey" id="ml5"></div>
+                        <div class="ml-6 ml" id="ml6"></div>
+                        <div class="ml-7 ml ml-grey" id="ml7"></div>
+                        <div class="ml-8 ml" id="ml8"></div>
+                        <div class="ml-9 ml ml-grey" id="ml9"></div>
+                        <div class="ml-10 ml" id="ml10"></div>
+                    </div>
+                </div>
+                <div class="garnish" id="garnish">GARNISH: </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-group">
+        <button class="button showAnswers" id="showAnswers" onclick="showAnswers()">Show Answers</button>
+        <button class="button nextCocktail" id="nextCocktail" onclick="nextCocktail()">Next Cocktail</button>
+        <button class="button endQuiz" id="endQuiz" onClick="endQuiz()">End Quiz</button>
+    </div>
+    <div class="number-of-cocktails">
+        <div id="cocktails-done" class="cocktails-done">1</div>
+        <div id="divider" class="divider">/</div>
+        <div id="total-cocktails" class="total-cocktails">2</div>
+    </div>
+
+    <script src="RecipeDatabase.js"></script>
+    <script src="cocktailGame.js"></script>
+</body>
+</html>

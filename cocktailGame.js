@@ -1,14 +1,18 @@
 // Global Variables
 
 // reset after each cocktail
-let question_number = 0;
-let cocktail_number = 0;
-let cocktail_finished = false;
-let ingredients_list;
-let ml_list = [];
-let recipe_length;
+// Strings
 let answer;
+// Integers
+let question_number;
+let random_cocktail;
+let recipe_length;
 let indexOfAnswer;
+// Booleans
+let cocktail_finished;
+// Arrays
+let ingredients_list;
+let ml_list;
 let questions = [
   "Which glass should we use for this cocktail?",
   "What type of ice should we use for this cocktail?",
@@ -21,31 +25,33 @@ let sections = [
 ];
 
 // reset only when reloading the screen
+let cocktail_number = 1;
+let cocktail_list = []
 let total_cocktails = cocktailList.length;
 let total_cocktails_finished = 0;
 let input = document.getElementById("input");
 let answer_switch = true;
 
+// Puts the cocktails from the database into a new empty array called cocktail_list
+for (let i = 0; i < total_cocktails; i++) {
+  cocktail_list.push(cocktailList[i]);
+}
+
 // Execute first cocktail
 newCocktail();
 
-// Returning all values of the cocktail card to normal
-function initialize() {
-  question_number = 0;
-  cocktail_number = 0;
-  cocktail_finished = false;
-  
-  questions = [
-    "Which glass should we use for this cocktail?",
-    "What type of ice should we use for this cocktail?",
-    "How should we procede to make this cocktail?"
-  ];
+// Updating Total Cocktails number when loading the page
+document.getElementById("total-cocktails").innerHTML = total_cocktails;
 
-  sections = [
-    "glass",
-    "ice",
-    "procedure"
-  ];
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      // You do not need to check if i is larger than splitStr length, as your for does that for you
+      // Assign it back to the array
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);    
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
 }
 
 function hideValues() {
@@ -61,6 +67,8 @@ function hideValues() {
   document.getElementById("ingredient6").innerHTML = "";
   document.getElementById("ingredient7").innerHTML = "";
   document.getElementById("ingredient8").innerHTML = "";
+  document.getElementById("ingredient9").innerHTML = "";
+  document.getElementById("ingredient10").innerHTML = "";
   document.getElementById("ml1").innerHTML = "";
   document.getElementById("ml2").innerHTML = "";
   document.getElementById("ml3").innerHTML = "";
@@ -69,6 +77,8 @@ function hideValues() {
   document.getElementById("ml6").innerHTML = "";
   document.getElementById("ml7").innerHTML = "";
   document.getElementById("ml8").innerHTML = "";
+  document.getElementById("ml9").innerHTML = "";
+  document.getElementById("ml10").innerHTML = "";
   document.getElementById("garnish").innerHTML = "GARNISH: ";
   document.getElementById("cocktail-img").src = "";
   document.getElementById("input").style.display = "inline-block";
@@ -78,23 +88,46 @@ function hideValues() {
   question_number = 0;
 }
 
+function endQuiz() {
+  window.location.href = "./index.html";
+}
+
 // Choosing random cocktail, calculating the length of that cockatil and loops the correct amount of questions for the ingredients
 function newCocktail() {
-  // Returning all values of the cocktail card to normal
-  initialize();
+
+  document.getElementById("nextCocktail").style.display = "none";
+
+  document.getElementById("cocktails-done").innerHTML = cocktail_number;
+  cocktail_number++
+
+  question_number = 0;
+  random_cocktail = 0;
+  cocktail_finished = false;
+
+  questions = [
+    "Which glass should we use for this cocktail?",
+    "What type of ice should we use for this cocktail?",
+    "How should we procede to make this cocktail?"
+  ];
+
+  sections = [
+    "glass",
+    "ice",
+    "procedure"
+  ];
 
   // Choosing random recipee and assigning it to the variable "cocktailNumber"
-  cocktail_number = Math.floor(Math.random() * cocktailList.length);
+  random_cocktail = Math.floor(Math.random() * cocktail_list.length);
 
   // accesses the recipe length from the database and assigns it to a new variable also called "recipeLength"
-  recipe_length = cocktailList[cocktail_number].recipeLength;
+  recipe_length = cocktail_list[random_cocktail].recipeLength;
 
   // Looping the ingredients into an array called "ingredients_list"
   for (let i = 0; i < recipe_length; i++) {
     if(i === 0) {
-      ingredients_list = (Object.keys(cocktailList[cocktail_number].ingredients[i]));
+      ingredients_list = (Object.keys(cocktail_list[random_cocktail].ingredients[i]));
     } else {
-      let ingredient = Object.keys(cocktailList[cocktail_number].ingredients[i])
+      let ingredient = Object.keys(cocktail_list[random_cocktail].ingredients[i])
       ingredients_list.push(ingredient[0]);
     }
   }
@@ -102,9 +135,9 @@ function newCocktail() {
   // Looping the ml into an array called "ml_list"
   for (let i = 0; i < recipe_length; i++) {
     if(i === 0) {
-      ml_list = (Object.values(cocktailList[cocktail_number].ingredients[i]));
+      ml_list = (Object.values(cocktail_list[random_cocktail].ingredients[i]));
     } else {
-      let ml = Object.values(cocktailList[cocktail_number].ingredients[i])
+      let ml = Object.values(cocktail_list[random_cocktail].ingredients[i])
       ml_list.push(ml[0]);
     }
   }
@@ -121,15 +154,16 @@ sections.push("garnish");
 questions.push("What kind of garnish should we use for this cocktail?");
 
 // Show name of cocktail
-document.getElementById("cocktail-name").innerText = cocktailList[cocktail_number].name;
+document.getElementById("cocktail-name").innerText = cocktail_list[random_cocktail].name;
 // Asking first question
 document.getElementById("question").innerHTML = questions[question_number];
 }
 
 // Check answer and if correct, show the answer & flash background green, if incorrect flash background red
 function checkAnswer() {
-  answer = document.getElementById("input").value.toLowerCase();
-  if (question_number == recipe_length * 2 + 3 && answer === cocktailList[cocktail_number][sections[question_number]]) {
+  answer = titleCase(document.getElementById("input").value);
+
+  if (question_number == recipe_length * 2 + 3 && answer === cocktail_list[random_cocktail][sections[question_number]]) {
     allCorrect();
   } else if (sections[question_number] === "ingredient") {
       if (ingredients_list.includes(answer)) {
@@ -147,7 +181,7 @@ function checkAnswer() {
         setTimeout(function() { white(); }, 1000);
       }
     } else {
-      if (answer === cocktailList[cocktail_number][sections[question_number]]) {
+      if (answer === cocktail_list[random_cocktail][sections[question_number]]) {
       nextQuestion();
       }
       else
@@ -171,7 +205,7 @@ function nextQuestion () {
 
   } else {
 
-    document.getElementById(sections[question_number]).innerHTML += cocktailList[cocktail_number][sections[question_number]];
+    document.getElementById(sections[question_number]).innerHTML += cocktail_list[random_cocktail][sections[question_number]];
 
   }
   green();
@@ -183,23 +217,28 @@ function nextQuestion () {
 // all questions correct for end screen
 function allCorrect() {
   green();
-  document.getElementById(sections[question_number]).innerHTML += cocktailList[cocktail_number][sections[question_number]];
+  document.getElementById(sections[question_number]).innerHTML += cocktail_list[random_cocktail][sections[question_number]];
   document.getElementById("question").innerHTML = "You've got it all correct!"
-  document.getElementById("cocktail-img").src = cocktailList[cocktail_number].image;
+  document.getElementById("cocktail-img").src = cocktail_list[random_cocktail].image;
   document.getElementById("input").style.display = "none";
   document.getElementById("button").style.display = "none";
   cocktail_finished = true;
   document.getElementById("showAnswers").style.display = "none";
   total_cocktails_finished++;
+
+  if (cocktail_number - 1 !== total_cocktails) {
+    document.getElementById("nextCocktail").style.display = "inline-block";
+  }
 }
 
 // Show/Hide Answers function
 function showAnswers() {
+
 if (!cocktail_finished) {
   if (answer_switch) {
-    document.getElementById("glass").innerHTML = "GLASS: " + cocktailList[cocktail_number].glass;
-    document.getElementById("ice").innerHTML = "ICE: " + cocktailList[cocktail_number].ice;
-    document.getElementById("procedure").innerHTML = "PROCEDURE: " + cocktailList[cocktail_number].procedure;
+    document.getElementById("glass").innerHTML = "GLASS: " + cocktail_list[random_cocktail].glass;
+    document.getElementById("ice").innerHTML = "ICE: " + cocktail_list[random_cocktail].ice;
+    document.getElementById("procedure").innerHTML = "PROCEDURE: " + cocktail_list[random_cocktail].procedure;
 
     if (recipe_length >= 1) {
       document.getElementById("ingredient1").innerHTML = ingredients_list[0];
@@ -224,6 +263,12 @@ if (!cocktail_finished) {
     }
     if (recipe_length >= 8) {
       document.getElementById("ingredient8").innerHTML = ingredients_list[7];
+    }
+    if (recipe_length >= 9) {
+      document.getElementById("ingredient9").innerHTML = ingredients_list[8];
+    }
+    if (recipe_length >= 10) {
+      document.getElementById("ingredient10").innerHTML = ingredients_list[9];
     }
 
     if (recipe_length >= 1) {
@@ -250,9 +295,15 @@ if (!cocktail_finished) {
     if (recipe_length >= 8) {
       document.getElementById("ml8").innerHTML = ml_list[7];
     }
+    if (recipe_length >= 9) {
+      document.getElementById("ml9").innerHTML = ml_list[8];
+    }
+    if (recipe_length >= 10) {
+      document.getElementById("ml10").innerHTML = ml_list[9];
+    }
 
-    document.getElementById("garnish").innerHTML = "GARNISH: " + cocktailList[cocktail_number].garnish;
-    document.getElementById("cocktail-img").src = cocktailList[cocktail_number].image;
+    document.getElementById("garnish").innerHTML = "GARNISH: " + cocktail_list[random_cocktail].garnish;
+    document.getElementById("cocktail-img").src = cocktail_list[random_cocktail].image;
 
     document.getElementById("question").innerHTML = "";
     document.getElementById("input").style.display = "none";
@@ -271,13 +322,14 @@ if (!cocktail_finished) {
   }
 }
 
-
 function nextCocktail() {
+
   document.getElementById("showAnswers").style.display = "inline-block";
+  document.getElementById("nextCocktail").style.display = "none";
 
-  cocktailList.splice(cocktail_number, 1);
+  cocktail_list.splice(random_cocktail, 1);
 
-  if (cocktailList.length == 0) {
+  if (cocktail_list.length == 0) {
     document.getElementById("question").innerHTML = "Good Job! You Got Them All!"
   } else {
     white();
