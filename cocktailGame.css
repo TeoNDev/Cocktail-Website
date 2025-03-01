@@ -68,9 +68,14 @@ body {
     right: 0;
 }
 .autocomplete-items div {
+    height: 40px;
+    font-size: 20px;
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .autocomplete-items div:hover {
     /*when hovering an item:*/
@@ -318,11 +323,11 @@ body {
 }
 
 input:checked + .slider {
-    background-color: #16437E;
+    background-color: #0A66C2;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #16437E;
+    box-shadow: 0 0 1px #0A66C2;
 }
 
 input:checked + .slider:before {

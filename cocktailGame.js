@@ -31,6 +31,7 @@ let total_cocktails = cocktailList.length;
 let total_cocktails_finished = 0;
 let input = document.getElementById("input");
 let answer_switch = true;
+let suggestion_switch = false;
 
 // Puts the cocktails from the database into a new empty array called cocktail_list
 for (let i = 0; i < total_cocktails; i++) {
@@ -216,19 +217,22 @@ function nextQuestion () {
   question_number++;
   setTimeout(function() { document.getElementById("question").innerHTML = questions[question_number]; }, 1000);
 
-  if (sections[question_number] === "glass") {
-    autocomplete(document.getElementById("input"), glassList);
-  } else if (sections[question_number] === "ice") {
-    autocomplete(document.getElementById("input"), iceList);
-  } else if (sections[question_number] === "procedure") {
-    autocomplete(document.getElementById("input"), procedureList);
-  } else if (sections[question_number] === "ingredient") {
-    autocomplete(document.getElementById("input"), ingredientsList);
-  } else if (sections[question_number] === "ml") {
-    autocomplete(document.getElementById("input"), mlList);
-  } else if (sections[question_number] === "garnish") {
-    autocomplete(document.getElementById("input"), garnishList);
+  if (suggestion_switch) {
+    if (sections[question_number] === "glass") {
+      autocomplete(document.getElementById("input"), glassList);
+    } else if (sections[question_number] === "ice") {
+      autocomplete(document.getElementById("input"), iceList);
+    } else if (sections[question_number] === "procedure") {
+      autocomplete(document.getElementById("input"), procedureList);
+    } else if (sections[question_number] === "ingredient") {
+      autocomplete(document.getElementById("input"), ingredientsList);
+    } else if (sections[question_number] === "ml") {
+      autocomplete(document.getElementById("input"), mlList);
+    } else if (sections[question_number] === "garnish") {
+      autocomplete(document.getElementById("input"), garnishList);
+    }
   }
+  
 }
 
 // all questions correct for end screen
@@ -241,6 +245,7 @@ function allCorrect() {
   document.getElementById("check-answer").style.display = "none";
   cocktail_finished = true;
   document.getElementById("showAnswers").style.display = "none";
+  document.getElementById("suggestion-switch-div").style.display = "none";
   total_cocktails_finished++;
 
   if (cocktail_number - 1 !== total_cocktails) {
@@ -341,8 +346,6 @@ if (!cocktail_finished) {
 }
 
 function nextCocktail() {
-
-  suggestionSwitchCheck();
 
   document.getElementById("showAnswers").style.display = "inline-block";
   document.getElementById("nextCocktail").style.display = "none";
@@ -512,8 +515,10 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (sections[question_number] === "garnish") {
         autocomplete(document.getElementById("input"), garnishList);
       }
+      suggestion_switch = true;
     } else {
       autocomplete(document.getElementById("input"), []);
+      suggestion_switch = false;
     }
   });
 });
