@@ -28,23 +28,10 @@ body {
     font-weight: bold;
 }
 
-.question-box {
-    margin-bottom: 30px;
-}
-
 .question {
-    margin-bottom: 20px;
+    height: 40px;
     font-size: 30px;
-}
-
-.input-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.input {
-    font-size: 14px;
+    margin-top: 80px;
 }
 
 .autocomplete {
@@ -53,11 +40,17 @@ body {
     display: inline-block;
 }
 .input {
+    font-size: 14px;
     border: 1px solid black;
     background-color: #f1f1f1;
     padding: 10px;
     font-size: 16px;
 }
+
+.check-answer {
+    margin-left: 10px;
+}
+
 .input[type=text] {
     background-color: #f1f1f1;
     width: 100%;
@@ -75,7 +68,6 @@ body {
     right: 0;
 }
 .autocomplete-items div {
-    padding: 10px;
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
@@ -91,7 +83,6 @@ body {
 }
 
 .button {
-    margin-left: 10px;
     align-items: center;
     background-color: #0A66C2;
     border: 0;
@@ -125,11 +116,10 @@ body {
 }
 
 .button-group {
+    width: 280px;
     margin: 40px;
-}
-
-.question-box {
-    height: 100px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .outer-card {
@@ -138,6 +128,7 @@ body {
     height: 460px;
     width: 700px;
     padding: 10px;
+    margin-top: 20px;
     box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
 }
 
@@ -167,7 +158,7 @@ body {
     padding-right: 15px;
 }
 
-.header {
+.card-header {
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -266,4 +257,85 @@ body {
     width: 40px;
     display: flex;
     justify-content: space-between;
+}
+
+.input-suggestion-div {
+    height: 40px;
+    margin-top: 50px;
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px 0px 30px;
+}
+
+.suggestion-switch-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+/* The switch - the box around the slider */
+.suggestion-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+/* Hide default HTML checkbox */
+.suggestion-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #16437E;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #16437E;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }

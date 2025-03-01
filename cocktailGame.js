@@ -40,7 +40,7 @@ for (let i = 0; i < total_cocktails; i++) {
 // Execute first cocktail
 newCocktail();
 
-autocomplete(document.getElementById("input"), glassList);
+suggestionSwitchCheck();
 
 // Updating Total Cocktails number when loading the page
 document.getElementById("total-cocktails").innerHTML = total_cocktails;
@@ -84,8 +84,9 @@ function hideValues() {
   document.getElementById("garnish").innerHTML = "GARNISH: ";
   document.getElementById("cocktail-img").src = "";
   document.getElementById("input").style.display = "inline-block";
-  document.getElementById("button").style.display = "inline-block"
+  document.getElementById("check-answer").style.display = "inline-block"
   document.getElementById("showAnswers").innerHTML = "Show Answers";
+  document.getElementById("suggestion-switch-div").style.display = "flex"
   answer_switch = true;
   question_number = 0;
 }
@@ -323,7 +324,8 @@ if (!cocktail_finished) {
 
     document.getElementById("question").innerHTML = "";
     document.getElementById("input").style.display = "none";
-    document.getElementById("button").style.display = "none";
+    document.getElementById("check-answer").style.display = "none";
+    document.getElementById("suggestion-switch-div").style.display = "none";
 
     document.getElementById("showAnswers").innerHTML = "Hide Answers";
 
@@ -339,6 +341,8 @@ if (!cocktail_finished) {
 }
 
 function nextCocktail() {
+
+  suggestionSwitchCheck();
 
   document.getElementById("showAnswers").style.display = "inline-block";
   document.getElementById("nextCocktail").style.display = "none";
@@ -488,3 +492,29 @@ input.addEventListener("keypress", function(event) {
     document.getElementById("check-answer").click();
   }
 });
+
+function suggestionSwitchCheck() {
+document.addEventListener('DOMContentLoaded', function () {
+  var checkbox = document.querySelector('input[type="checkbox"]');
+
+  checkbox.addEventListener('change', function () {
+    if (checkbox.checked) {
+      if (sections[question_number] === "glass") {
+        autocomplete(document.getElementById("input"), glassList);
+      } else if (sections[question_number] === "ice") {
+        autocomplete(document.getElementById("input"), iceList);
+      } else if (sections[question_number] === "procedure") {
+        autocomplete(document.getElementById("input"), procedureList);
+      } else if (sections[question_number] === "ingredient") {
+        autocomplete(document.getElementById("input"), ingredientsList);
+      } else if (sections[question_number] === "ml") {
+        autocomplete(document.getElementById("input"), mlList);
+      } else if (sections[question_number] === "garnish") {
+        autocomplete(document.getElementById("input"), garnishList);
+      }
+    } else {
+      autocomplete(document.getElementById("input"), []);
+    }
+  });
+});
+}

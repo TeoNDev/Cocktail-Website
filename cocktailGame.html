@@ -6,22 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cocktail Game</title>
     <link rel="stylesheet" href="cocktailGame.css">
+    <link rel="stylesheet" href="header.css">
 </head>
 <body>
+    <header class="header">
+        <p class="page-name" onClick="reloadPage()">Cocktail Hub</p>
+    </header>
+
     <div class="question-box" id="question-box">
         <p class="question" id="question"></p>
-        <form autocomplete="off" action="" class="input-button">
+    </div>
+    <div class="input-suggestion-div">
+        <form autocomplete="off" action=""  class="input-button">
             <div class="autocomplete">
             <input id="input" class="input" type="text" name="input" placeholder="Vodka">
             </div>
             <input class="button check-answer" type="button" id="check-answer" value="Check Answer" onclick="checkAnswer()">
         </form>
+
+        <div class="suggestion-switch-div" id="suggestion-switch-div">
+            <p class="suggestion-text">Suggestions</p>
+            <label class="suggestion-switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
     </div>
     <div class="outer-card">
         <div class="inner-card">
             <img src="" alt="" class="cocktail-img" id="cocktail-img">
             <div class="recipe">
-                <div class="header">
+                <div class="card-header">
                     <div class="cocktail-name" id="cocktail-name">Cocktail Name</div>
                     <div class="header-bottom">
                         <div class="header-bottom-left">
@@ -80,6 +95,7 @@
 
     <script src="suggestions.js"></script>
     <script src="RecipeDatabase.js"></script>
+    <script src="header.js"></script>
     <script src="cocktailGame.js"></script>
 </body>
 </html>

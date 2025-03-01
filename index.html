@@ -6,11 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="header.css">
 </head>
 <body>
+  <header class="header">
+    <p class="page-name" onClick="reloadPage()">Cocktail Hub</p>
+  </header>
+
   <button class="button start-quiz" id="start-quiz" onClick="startQuiz()">Start Quiz</button>
 
-  <script src="RecipeDatabase.js"></script>
+  <script src="recipeDatabase.js"></script>
+  <script src="header.js"></script>
   <script src="index.js"></script>
 </body>
 </html>

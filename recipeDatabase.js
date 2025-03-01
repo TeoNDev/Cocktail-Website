@@ -314,7 +314,7 @@ const cocktailList = [
     glass: "Highball",
     ice: "Crushed",
     procedure: "Muddle, Bash, Build & Churn",
-    ingredients: [{"Lime Wedges" : "4 Wedges"}, {"Sugar Syrup" : "20"}, {"Mint Leaves" : "8-12 Leaves"}, {"Light Rum" : "60"}, {"Soda" : "Top"}],
+    ingredients: [{"Lime Wedges" : "4 Wedges"}, {"Sugar Syrup" : "20"}, {"Mint Leaves" : "8-12 Leaves"}, {"Light Rum" : "60"}, {"Soda Water" : "Top"}],
     recipeLength: 5,
     garnish: "Mint Sprig",
     image: "./Images/Mojito.png"
@@ -334,7 +334,7 @@ const cocktailList = [
     glass: "Julep Tin",
     ice: "Crushed",
     procedure: "Soak, Muddle, Bash, Build & Churn",
-    ingredients: [{"Angostura Soaked Sugar Cube" : "1 Cube"}, {"Barspoon Of Soda" : "1 Barspoon"}, {"Mint Leaves" : "8-12 Leaves"}, {"Bourbon" : "60"}],
+    ingredients: [{"Angostura Soaked Sugar Cube" : "1 Cube"}, {"Soda Water" : "1 Barspoon"}, {"Mint Leaves" : "8-12 Leaves"}, {"Bourbon" : "60"}],
     recipeLength: 4,
     garnish: "Mint Sprig",
     image: "./Images/MintJulep.png"
@@ -387,7 +387,7 @@ const cocktailList = [
     ingredients: [{"Peach Puree" : "10"}, {"Peachtree" : "10"}, {"Prosecco" : "Fill"}],
     recipeLength: 3,
     garnish: "None",
-    image: "./Images/Bellini.jpg"
+    image: "./Images/Bellini.png"
   },
   {
     name: "French 75",

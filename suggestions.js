@@ -2,10 +2,10 @@ const glassList = ["Highball", "Rocks", "Copper Mug", "Chilled Martini", "Tiki M
 
 const iceList = ["None", "Cubed", "Crushed"];
 
-const procedureList = ["Build", "Build & Float", "Build & Sink", "Shake & Strain", "Shake & Fine Strain", "Dry Shake, Shake & Strain", "Dry Shake, Shake & Fine Strain", "Muddle, Bash, Build & Churn"];
+const procedureList = ["Build", "Build & Float", "Build & Sink", "Shake & Strain", "Shake & Fine Strain", "Dry Shake, Shake & Strain", "Dry Shake, Shake & Fine Strain", "Muddle, Bash, Build & Churn", "Stir & Julep Strain", "Shake, Strain & Float", "Muddle, Build & Churn", "Soak, Muddle, Bash, Build & Churn", "Layer in Order", "Build & Stir Gently", "Build & Stir", "Soak, Muddle, Build & Stir Slowly", "Roll", "Build in Order", " Soak & Build", "Rinse, Stir & Julep Strain"];
 
-const ingredientsList = ["Vodka", "Tonic"];
+const ingredientsList = ["Gin", "Tonic", "Vodka", "Orange Juice", "Light Rum", "Fresh Lime Juice", "Coca Cola", "Tequila", "Grenadine", "Scotch Whiskey", "Drambuie", "Amaretto", "Kahlua", "Milk", "Ginger Beer", "Peachtree", "Cranberry Juice", "Grapefruit Juice", "Baileys", "Crème de Casis", "Ginger Ale", "Lemon Vodka", "Cointreau", "Light Rum", "Sugar Syrup", "Chambord", "Pineapple Juice", "Jack Daniel's", "Fresh Lemon Juice", "Lemonade", "Angostura Bitters", "Bourbon", "Soda Water", "Dry Vermouth", "Sweet Vermouth", "Cognac", "Egg White", "Raspberry Puree", "Crème de Mure", "Lime Wedges", "Mint Leaves", "Cachaca", "Angostura Soaked Sugar Cube", "Basil Leaves", "Passionfruit Liqueur", "Passionfruit Puree", "Vanilla Syrup", "Brut Champagne", "Peach Puree", "Prosecco", "Champagne", "Dark Rum", "Maraschino", "Campari", "Aperol", "Espresso", "Brandy", "Dark Cacao Liqueur", "Crème de Menthe", "White Cacao Liqueur", "Orgeat Syrup", "Overproof Rum", "Crème de Casis", "Cherry Brandy", "Apple Liqueur", "Benedectine D.O.M", "Lime Cordial", "Orange Bitters", "Absinthe", "Cinnamon Syrup", "Coconut Liqueur", "Coconut Cream"];
 
-const mlList = ["Fill", "Top", "2 Dashes", "4 Dashes", "10", "15", "20", "30", "40", "50", "60"];
+const mlList = ["Fill", "Top", "1 Dash", "2 Dashes", "3 Dashes", "4 Dashes", "1 Barspoon", "4 Wedges", "6 Wedges", "8-12 Leaves", "Shot on the side", "1 Cube", "1 Part", "1 Shot", "Rinse", "5", "10", "15", "20", "30", "40", "50", "60", "80"];
 
-const garnishList = ["None", "Lime Wedge"];
+const garnishList = ["None", "Lime Wedge", "Lemon Zest", "Orange Zest", "1 Raspberry", "Lemon Wedge", "Lemon Spiral", "Olives", "1 Cherry", "Salt Rim", "Sugar Rim", "Lemon Wedge & Cherry", "Orange Zest & Cherry", "Lemon Wedge & 2 Blackberries", "Mint Sprig", "Basil Leaf", "Single Mint Leaf", "1/2 Passionfruit", "Orange Slice", "3 Coffee Beans", "Grated Nutmeg", "Pineapple Wedge & Cherry", "Lime Zest", "Sugar Coated Lemon Wedge"];
