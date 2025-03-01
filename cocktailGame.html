@@ -10,8 +10,12 @@
 <body>
     <div class="question-box" id="question-box">
         <p class="question" id="question"></p>
-        <input class="input" type="text" list="suggestions" class="input" id="input">
-        <input class="button check-answer" type="button" id="button" value="Check Answer" onclick="checkAnswer()">
+        <form autocomplete="off" action="" class="input-button">
+            <div class="autocomplete">
+            <input id="input" class="input" type="text" name="input" placeholder="Vodka">
+            </div>
+            <input class="button check-answer" type="button" id="check-answer" value="Check Answer" onclick="checkAnswer()">
+        </form>
     </div>
     <div class="outer-card">
         <div class="inner-card">
@@ -74,6 +78,7 @@
         <div id="total-cocktails" class="total-cocktails">2</div>
     </div>
 
+    <script src="suggestions.js"></script>
     <script src="RecipeDatabase.js"></script>
     <script src="cocktailGame.js"></script>
 </body>
