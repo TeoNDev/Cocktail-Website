@@ -360,6 +360,22 @@ function nextCocktail() {
     hideValues();
 
     newCocktail();
+
+    if (suggestion_switch) {
+      if (sections[question_number] === "glass") {
+        autocomplete(document.getElementById("input"), glassList);
+      } else if (sections[question_number] === "ice") {
+        autocomplete(document.getElementById("input"), iceList);
+      } else if (sections[question_number] === "procedure") {
+        autocomplete(document.getElementById("input"), procedureList);
+      } else if (sections[question_number] === "ingredient") {
+        autocomplete(document.getElementById("input"), ingredientsList);
+      } else if (sections[question_number] === "ml") {
+        autocomplete(document.getElementById("input"), mlList);
+      } else if (sections[question_number] === "garnish") {
+        autocomplete(document.getElementById("input"), garnishList);
+      }
+    }
   }
 }
 
@@ -389,6 +405,8 @@ function wait(ms) {
   current_time = time.getTime();
   }
 }
+
+// Autocomplete Function
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -495,6 +513,8 @@ input.addEventListener("keypress", function(event) {
     document.getElementById("check-answer").click();
   }
 });
+
+// Suggestion Switch function
 
 function suggestionSwitchCheck() {
 document.addEventListener('DOMContentLoaded', function () {
