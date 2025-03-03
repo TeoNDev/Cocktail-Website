@@ -28,7 +28,7 @@ const cocktailList = [
     recipeLength: 3,
     garnish: "Lime Wedge",
     image: "./Images/CubaLibre.png"
-  },
+  },/*
   {
     name: "Tequila Sunrise",
     glass: "Highball",
@@ -658,5 +658,5 @@ const cocktailList = [
     recipeLength: 3,
     garnish: "Sugar Coated Lemon Wedge",
     image: "./Images/LemonDrop.png"
-  }
+  }*/
 ];
