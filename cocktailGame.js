@@ -6,6 +6,11 @@ let total_cocktails_finished = 0;
 let answer_switch = true;
 let suggestion_switch = false;
 
+// end stats variables
+let perfect_cocktails = 0;
+let mistakes = 0;
+let current_cocktail_mistakes = 0;
+
 // reset after each cocktail
 let answer;
 let question_number;
@@ -32,7 +37,7 @@ const check_answer = document.getElementById("check-answer");
 const cocktails_done = document.getElementById("cocktails-done");
 const total_cocktails_text = document.getElementById("total-cocktails");
 const cocktail_name = document.getElementById("cocktail-name");
-const question = document.getElementById("question")
+const question = document.getElementById("question");
 const glass = document.getElementById("glass");
 const ice = document.getElementById("ice");
 const procedure = document.getElementById("procedure");
@@ -203,6 +208,8 @@ function checkAnswer() {
         indexOfAnswer = ingredients_list.indexOf(answer);
         nextQuestion();
       } else {
+        mistakes++;
+        current_cocktail_mistakes++;
         red();
         setTimeout(function() { white(); }, 1000);
       }
@@ -210,6 +217,8 @@ function checkAnswer() {
       if (answer === ml_list[indexOfAnswer]) {
         nextQuestion();
       } else {
+        mistakes++;
+        current_cocktail_mistakes++;
         red();
         setTimeout(function() { white(); }, 1000);
       }
@@ -219,6 +228,8 @@ function checkAnswer() {
       }
       else
       {
+        mistakes++;
+        current_cocktail_mistakes++;
       red();
       setTimeout(function() { white(); }, 1000);
       }
@@ -271,8 +282,17 @@ function allCorrect() {
   suggestion_switch_div.style.display = "none";
   total_cocktails_finished++;
 
+  if(current_cocktail_mistakes === 0) {
+    perfect_cocktails++;
+    current_cocktail_mistakes = 0;
+  } else {
+    current_cocktail_mistakes = 0;
+  }
+
   if (cocktail_number - 1 !== total_cocktails) {
     next_cocktail.style.display = "inline-block";
+  } else {
+    endScreen();
   }
 }
 
@@ -287,45 +307,45 @@ if (!cocktail_finished) {
 
     if (recipe_length >= 1) {
       ingredient1.innerHTML = ingredients_list[0];
-    } else if (recipe_length >= 2) {
+    } if (recipe_length >= 2) {
       ingredient2.innerHTML = ingredients_list[1];
-    } else if (recipe_length >= 3) {
+    } if (recipe_length >= 3) {
       ingredient3.innerHTML = ingredients_list[2];
-    } else if (recipe_length >= 4) {
+    } if (recipe_length >= 4) {
       ingredient4.innerHTML = ingredients_list[3];
-    } else if (recipe_length >= 5) {
+    } if (recipe_length >= 5) {
       ingredient5.innerHTML = ingredients_list[4];
-    } else if (recipe_length >= 6) {
+    } if (recipe_length >= 6) {
       ingredient6.innerHTML = ingredients_list[5];
-    } else if (recipe_length >= 7) {
+    } if (recipe_length >= 7) {
       ingredient7.innerHTML = ingredients_list[6];
-    } else if (recipe_length >= 8) {
+    } if (recipe_length >= 8) {
       ingredient8.innerHTML = ingredients_list[7];
-    } else if (recipe_length >= 9) {
+    } if (recipe_length >= 9) {
       ingredient9.innerHTML = ingredients_list[8];
-    } else if (recipe_length >= 10) {
+    } if (recipe_length >= 10) {
       ingredient10.innerHTML = ingredients_list[9];
     }
 
     if (recipe_length >= 1) {
       ml1.innerHTML = ml_list[0];
-    } else if (recipe_length >= 2) {
+    } if (recipe_length >= 2) {
       ml2.innerHTML = ml_list[1];
-    } else if (recipe_length >= 3) {
+    } if (recipe_length >= 3) {
       ml3.innerHTML = ml_list[2];
-    } else if (recipe_length >= 4) {
+    } if (recipe_length >= 4) {
       ml4.innerHTML = ml_list[3];
-    } else if (recipe_length >= 5) {
+    } if (recipe_length >= 5) {
       ml5.innerHTML = ml_list[4];
-    } else if (recipe_length >= 6) {
+    } if (recipe_length >= 6) {
       ml6.innerHTML = ml_list[5];
-    } else if (recipe_length >= 7) {
+    } if (recipe_length >= 7) {
       ml7.innerHTML = ml_list[6];
-    } else if (recipe_length >= 8) {
+    } if (recipe_length >= 8) {
       ml8.innerHTML = ml_list[7];
-    } else if (recipe_length >= 9) {
+    } if (recipe_length >= 9) {
       ml9.innerHTML = ml_list[8];
-    } else if (recipe_length >= 10) {
+    } if (recipe_length >= 10) {
       ml10.innerHTML = ml_list[9];
     }
 
@@ -357,29 +377,23 @@ function nextCocktail() {
 
   cocktail_list.splice(random_cocktail, 1);
 
-  if (cocktail_list.length == 0) {
-    question.innerHTML = "Good Job! You Got Them All!"
-  } else {
-    white();
+  white();
+  hideValues();
+  newCocktail();
 
-    hideValues();
-
-    newCocktail();
-
-    if (suggestion_switch) {
-      if (sections[question_number] === "glass") {
-        autocomplete(input, glassList);
-      } else if (sections[question_number] === "ice") {
-        autocomplete(input, iceList);
-      } else if (sections[question_number] === "procedure") {
-        autocomplete(input, procedureList);
-      } else if (sections[question_number] === "ingredient") {
-        autocomplete(input, ingredientsList);
-      } else if (sections[question_number] === "ml") {
-        autocomplete(input, mlList);
-      } else if (sections[question_number] === "garnish") {
-        autocomplete(input, garnishList);
-      }
+  if (suggestion_switch) {
+    if (sections[question_number] === "glass") {
+      autocomplete(input, glassList);
+    } else if (sections[question_number] === "ice") {
+      autocomplete(input, iceList);
+    } else if (sections[question_number] === "procedure") {
+      autocomplete(input, procedureList);
+    } else if (sections[question_number] === "ingredient") {
+      autocomplete(input, ingredientsList);
+    } else if (sections[question_number] === "ml") {
+      autocomplete(input, mlList);
+    } else if (sections[question_number] === "garnish") {
+      autocomplete(input, garnishList);
     }
   }
 }
@@ -510,13 +524,22 @@ document.addEventListener("click", function (e) {
 });
 }
 
-// Input Check on Enter
-input.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    console.log("enter")
-    event.preventDefault();
-    check_answer.click();
-  }
+
+// Check Answer on Enter
+document.addEventListener("DOMContentLoaded", function () {
+  const inputField = document.getElementById("input");
+  const checkAnswerButton = document.getElementById("check-answer");
+
+  inputField.addEventListener("keydown", function (event) {
+      let autocompleteList = document.getElementById(inputField.id + "autocomplete-list");
+
+      if (event.key === "Enter") {
+          if (!autocompleteList || !autocompleteList.querySelector(".autocomplete-active")) {
+              event.preventDefault(); // Prevent form submission
+              checkAnswerButton.click(); // Trigger the button if no suggestion is selected
+          }
+      }
+  });
 });
 
 // Suggestion Switch function
@@ -548,23 +571,56 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 }
 
-// Countup timer
-let minutesLabel = document.getElementById("minutes");
-let secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
-setInterval(setTime, 1000);
+let time = 0;
+let elapsedSeconds = 0;
+let timer;
 
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+function formatTime(seconds) {
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds % 3600) / 60);
+    let secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
-function pad(val) {
-  let valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
+function startTimer() {
+    timer = setInterval(() => {
+        elapsedSeconds++;
+        document.getElementById("minutes").textContent = Math.floor((elapsedSeconds % 3600) / 60).toString().padStart(2, '0');
+        document.getElementById("seconds").textContent = (elapsedSeconds % 60).toString().padStart(2, '0');
+
+        let hours = Math.floor(elapsedSeconds / 3600);
+        if (hours > 0) {
+            document.getElementById("hours").style.display = "inline";
+            document.getElementById("hours-divider").style.display = "inline";
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+        }
+    }, 1000);
+}
+
+window.onload = function() {
+    startTimer();
+};
+
+function endScreen() {
+    clearInterval(timer);
+    let formattedTime = formatTime(elapsedSeconds);
+    document.getElementById("time").textContent = "Time: " + formattedTime;
+
+    question.style.display = "none";
+    green();
+
+    const end_card = document.getElementById("end-card");
+    const outer_card = document.getElementById("outer-card");
+    const input_line = document.getElementById("input-suggestion-div");
+    const mistake_text = document.getElementById("mistakes");
+    const perfect_cocktails_text = document.getElementById("perfect-cocktails");
+    const time_text = document.getElementById("time");
+
+    end_card.classList.toggle("hide");
+    outer_card.classList.toggle("hide");
+    input_line.style.display = "none";
+
+    mistake_text.innerHTML += mistakes;
+    perfect_cocktails_text.innerHTML += `${perfect_cocktails}/${total_cocktails}`;
+    time_text.textContent = "Time: " + formattedTime;
 }

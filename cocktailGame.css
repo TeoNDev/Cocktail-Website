@@ -129,7 +129,44 @@ body {
     width: 280px;
     margin: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.hide {
+    display: none;
+}
+
+.end-card {
+    background-color: white;
+    border: solid 1px black;
+    height: 460px;
+    width: 700px;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
+}
+
+.inner-end-card {
+    background-color: white;
+    border: solid 1px black;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.end-stats-group {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.end-stats {
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .outer-card {

@@ -16,8 +16,10 @@
     <div class="question-box" id="question-box">
         <p class="question" id="question"></p>
     </div>
-    <div class="input-suggestion-div">
+    <div class="input-suggestion-div" id="input-suggestion-div">
         <div class="timer">
+            <p class="hours" id="hours" style="display: none;">00</p>
+            <p class="timer-divider" id="hours-divider" style="display: none;">:</p>
             <p class="minutes" id="minutes">00</p>
             <p class="timer-divider">:</p>
             <p class="seconds" id="seconds">00</p>
@@ -37,7 +39,18 @@
             </label>
         </div>
     </div>
-    <div class="outer-card">
+    <div class="end-card hide" id="end-card">
+        <div class="inner-end-card">
+            <h1>Congratulations, You got them all! Check out your stats below:</h1>
+            <div class="end-stats-group">
+                <p class="time end-stats" id="time">Time: </p>
+                <p class="mistakes end-stats" id="mistakes">Mistakes: </p>
+                <p class="perfect-cocktails end-stats" id="perfect-cocktails">Perfect Cocktails: </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="outer-card" id="outer-card">
         <div class="inner-card">
             <img src="" alt="" class="cocktail-img" id="cocktail-img">
             <div class="recipe">
