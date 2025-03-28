@@ -1,5 +1,6 @@
 const cocktailList = [
   {
+    id: 0,
     name: "Gin & Tonic",
     glass: "Highball",
     ice: "Cubed",
@@ -10,6 +11,7 @@ const cocktailList = [
     image: "./Images/Gin&Tonic.jpg"
   },
   {
+    id: 1,
     name: "Screwdriver",
     glass: "Highball",
     ice: "Cubed",
@@ -20,6 +22,7 @@ const cocktailList = [
     image: "./Images/Screwdriver.png"
   },
   {
+    id: 2,
     name: "Cuba Libre",
     glass: "Highball",
     ice: "Cubed",
@@ -28,7 +31,7 @@ const cocktailList = [
     recipeLength: 3,
     garnish: "Lime Wedge",
     image: "./Images/CubaLibre.png"
-  },/*
+  },
   {
     name: "Tequila Sunrise",
     glass: "Highball",
@@ -658,5 +661,5 @@ const cocktailList = [
     recipeLength: 3,
     garnish: "Sugar Coated Lemon Wedge",
     image: "./Images/LemonDrop.png"
-  }*/
+  }
 ];

@@ -1,7 +1,9 @@
+const selectionArr = JSON.parse(localStorage.getItem("selection_arr"));;
+
 // reset only when reloading the screen
 let cocktail_number = 1;
-let cocktail_list = [];
-let total_cocktails = cocktailList.length;
+let cocktail_list = selectionArr;
+let total_cocktails = selectionArr.length;
 let total_cocktails_finished = 0;
 let answer_switch = true;
 let suggestion_switch = false;
@@ -66,11 +68,6 @@ const cocktail_img = document.getElementById("cocktail-img");
 const show_answers = document.getElementById("showAnswers");
 const next_cocktail = document.getElementById("nextCocktail");
 const suggestion_switch_div = document.getElementById("suggestion-switch-div");
-
-// Puts the cocktails from the database into a new empty array called cocktail_list
-for (let i = 0; i < total_cocktails; i++) {
-  cocktail_list.push(cocktailList[i]);
-}
 
 // Execute first cocktail
 newCocktail();
@@ -157,6 +154,8 @@ function newCocktail() {
   // Choosing random recipee and assigning it to the variable "cocktailNumber"
   random_cocktail = Math.floor(Math.random() * cocktail_list.length);
 
+
+  console.log(selectionArr)
   // accesses the recipe length from the database and assigns it to a new variable also called "recipeLength"
   recipe_length = cocktail_list[random_cocktail].recipeLength;
 

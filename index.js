@@ -1,3 +1,3 @@
-function startQuiz () {
-  window.location.href = "./cocktailGame.html";
+function quiz () {
+  window.location.href = "./cocktailSelection.html";
 }
