@@ -1,8 +1,8 @@
 .all-buttons {
-  border: 1px solid black;
   display: flex;
   width: 90%;
-  height: 70%;
+  height: 75%;
+  margin-top: 80px;
 }
 
 .special-buttons {

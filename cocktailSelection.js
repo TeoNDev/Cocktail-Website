@@ -82,11 +82,15 @@ function removeItemAll(arr, value) {
 }
 
 function startQuiz() {
-  // Save the selection array to localStorage
-  localStorage.setItem("selection_arr", JSON.stringify(selection_arr));
-  
-  // Redirect to the quiz page
-  window.location.href = "./cocktailGame.html";
+  if(selection_arr.length > 0) {
+    // Save the selection array to localStorage
+    localStorage.setItem("selection_arr", JSON.stringify(selection_arr));
+    
+    // Redirect to the quiz page
+    window.location.href = "./cocktailGame.html";
+  } else {
+    alert("You have to choose at least 1 cocktail.");
+  } 
 }
 
 const selectAllCheckboxes = () => {

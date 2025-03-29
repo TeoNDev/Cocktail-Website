@@ -47,7 +47,7 @@ const cocktailList = [
     glass: "Rocks",
     ice: "Cubed",
     procedure: "Build",
-    ingredients: [{"Scotch Whiskey" : "30"}, {"Drambuie" : 30}],
+    ingredients: [{"Scotch Whiskey" : "30"}, {"Drambuie" : "30"}],
     recipeLength: 2,
     garnish: "Lemon Zest",
     image: "./Images/RustyNail.png"

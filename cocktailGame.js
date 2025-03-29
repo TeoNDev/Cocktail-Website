@@ -32,6 +32,8 @@ let sections = [
   "ice",
   "procedure"
 ];
+let guessed_answers = [];
+let current_mistakes = 0;
 
 // DOM variables
 const input = document.getElementById("input");
@@ -68,6 +70,7 @@ const cocktail_img = document.getElementById("cocktail-img");
 const show_answers = document.getElementById("showAnswers");
 const next_cocktail = document.getElementById("nextCocktail");
 const suggestion_switch_div = document.getElementById("suggestion-switch-div");
+const hint_div = document.getElementById("hint-div");
 
 // Execute first cocktail
 newCocktail();
@@ -87,6 +90,13 @@ function titleCase(str) {
   // Directly return the joined string
   return splitStr.join(' ');
 }
+
+window.addEventListener("beforeunload", function (e) {
+  let confirmationMessage = "Are you sure you want to leave this page?";
+
+  (e).returnValue = confirmationMessage; //Gecko + IE
+  return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
 
 function hideValues() {
   input.value = "";
@@ -207,6 +217,12 @@ function checkAnswer() {
         indexOfAnswer = ingredients_list.indexOf(answer);
         nextQuestion();
       } else {
+        if(guessed_answers.includes(answer)) {
+          question.innerHTML = `You've already guessed ${answer}`;
+          setTimeout(function() { question.innerHTML = questions[question_number]; }, 1000);
+        }
+        guessed_answers.push(answer);
+        current_mistakes++
         mistakes++;
         current_cocktail_mistakes++;
         red();
@@ -216,6 +232,12 @@ function checkAnswer() {
       if (answer === ml_list[indexOfAnswer]) {
         nextQuestion();
       } else {
+        if(guessed_answers.includes(answer)) {
+          question.innerHTML = `You've already guessed ${answer}`;
+          setTimeout(function() { question.innerHTML = questions[question_number]; }, 1000);
+        }
+        guessed_answers.push(answer);
+        current_mistakes++
         mistakes++;
         current_cocktail_mistakes++;
         red();
@@ -227,6 +249,12 @@ function checkAnswer() {
       }
       else
       {
+        if(guessed_answers.includes(answer)) {
+          question.innerHTML = `You've already guessed ${answer}`;
+          setTimeout(function() { question.innerHTML = questions[question_number]; }, 1000);
+        }
+        guessed_answers.push(answer);
+        current_mistakes++
         mistakes++;
         current_cocktail_mistakes++;
       red();
@@ -237,6 +265,9 @@ function checkAnswer() {
 }
 
 function nextQuestion () {
+  guessed_answers = [];
+  current_mistakes = 0;
+
   if (sections[question_number] === "ingredient") {
     indexOfAnswer = ingredients_list.indexOf(answer);
     document.getElementById(sections[question_number] + (indexOfAnswer + 1).toString()).innerHTML = answer;
@@ -270,6 +301,8 @@ function nextQuestion () {
 
 // all questions correct for end screen
 function allCorrect() {
+  guessed_answers = [];
+  current_mistakes = 0;
   green();
   document.getElementById(sections[question_number]).innerHTML += cocktail_list[random_cocktail][sections[question_number]];
   question.innerHTML = "You've got it all correct!"
@@ -623,3 +656,13 @@ function endScreen() {
     perfect_cocktails_text.innerHTML += `${perfect_cocktails}/${total_cocktails}`;
     time_text.textContent = "Time: " + formattedTime;
 }
+
+/*
+function giveHint() {
+  hint_div.classList.toggle("hide");
+}
+
+function closeHint() {
+  hint_div.classList.toggle("hide");
+}
+*/
