@@ -1,10 +1,35 @@
+h1 {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.tags {
+  display: flex;
+  margin-bottom: 50px;
+  font-size: 12px;
+  color: white;
+}
+
+.tag {
+  margin: 0px 4px 0px 4px;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.tag-1 {
+  background-color: #0A66C2;
+}
+
+.tag-2 {
+  background-color: #dd2727;
+}
+
 .outer-card {
   background-color: white;
   border: solid 1px black;
   height: 460px;
   width: 700px;
   padding: 10px;
-  margin-top: 20px;
   box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
 }
 
@@ -124,4 +149,68 @@
   display: flex;
   align-items: center;
   padding-left: 5px;
+}
+
+.step-by-step-guide {
+  margin-left: 50px;
+  padding: 10px;
+  height: 460px;
+  width: 100%;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
+} 
+
+.inner-step-by-step {
+  height: 100%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.guide {
+  font-size: 24px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.step {
+  margin-bottom: 5px;
+}
+
+.card-and-guide {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 1200px;
+}
+
+.info-history {
+  margin: 50px 0;
+  width: 1200px;
+  display: flex;
+}
+
+.outer-info, .outer-history {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
+}
+
+.outer-history {
+  margin-left: 50px;
+}
+
+.inner-info, .inner-history {
+  border: 1px solid black;
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+}
+
+.text {
+  margin-top: 10px;
+  text-align: start;
 }

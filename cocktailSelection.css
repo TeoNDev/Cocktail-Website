@@ -1,3 +1,8 @@
+body {
+  height: -webkit-calc(100vh - 80px);
+  margin-top: 80px;
+}
+
 .all-buttons {
   display: flex;
   width: 90%;
